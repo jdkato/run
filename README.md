@@ -1,2 +1,3 @@
-# run
-:running: A command-line tool for running other command-line tools: create interactive prompts, collect specific inputs, manage configuration files, and much more!
+# `run`
+
+> `run` is a *meta* command-line tool&mdash;it's sole purpose is to run *other* command-line tools.
