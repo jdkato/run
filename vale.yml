@@ -1,0 +1,11 @@
+# $ run vale.yml
+---
+steps:
+  - type: setup
+
+    fetch:
+      - link: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
+        path: /styles/Google
+
+      - link: https://raw.githubusercontent.com/errata-ai/vale/v2/.vale.ini
+        path: .vale.ini
