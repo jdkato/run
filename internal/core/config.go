@@ -1,8 +1,6 @@
-package config
+package core
 
 import (
-	"fmt"
-
 	"gopkg.in/yaml.v3"
 )
 
@@ -22,9 +20,5 @@ func init() {
 	}
 	v.A = 1
 	v.B = "hello"
-	bytes, err := yaml.Marshal(v)
-	if err != nil {
-		//...
-	}
-	fmt.Println(string(bytes)) // "a: 1\nb: hello\n"ci
+	_, _ = yaml.Marshal(v)
 }

@@ -5,44 +5,41 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/jdkato/run/internal/core"
 	"github.com/logrusorgru/aurora/v3"
 	"github.com/olekukonko/tablewriter"
 )
 
-var exampleConfig = `StylesPath = a/path/to/your/styles
-	MinAlertLevel = suggestion
-	[*]
-	BasedOnStyles = Vale`
+var exampleConfig = `# $ run vale.yml
+	---
+	language: python
+	sudo: false
+	python:
+	  - 2.7
+	  - 3.4
+	script: py.test -v`
 
-var intro = fmt.Sprintf(`vale - A command-line linter for prose.
+var intro = fmt.Sprintf(`run - A %s command-line tool.
 
 %s:	%s
-	%s
-	%s
 
-Vale is a syntax-aware linter for prose built with speed and extensibility in
-mind. It supports Markdown, AsciiDoc, reStructuredText, HTML, and more.
+run is a tool for running other command-line tools: create interactive prompts,
+collect specific inputs, manage configuration files, and much more!
 
-It's designed to enforce custom rulesets (referred to as "styles"). See
-%s for examples of what's possible.
-
-To get started, you'll need a configuration file (%s):
+To get started, you'll need a script.yml file.
 
 %s:
+
 	%s
 
 See %s for more setup information.`,
+	aurora.Italic("meta"),
 	aurora.Bold("Usage"),
 
-	aurora.Faint("vale [options] [input...]"),
-	aurora.Faint("vale myfile.md myfile1.md mydir1"),
-	aurora.Faint("vale --output=JSON [input...]"),
+	aurora.Faint("$ run [options] script.yml"),
 
-	aurora.Underline("https://github.com/errata-ai/styles"),
-
-	aurora.Faint(".vale.ini"),
 	aurora.Bold("Example"),
-	aurora.Faint(exampleConfig),
+	core.Highlight(exampleConfig),
 
 	aurora.Underline("https://docs.errata.ai/vale/about"))
 
@@ -50,7 +47,7 @@ var info = fmt.Sprintf(`%s
 
 (Or use %s for a listing of all CLI options.)`,
 	intro,
-	aurora.Faint("vale --help"))
+	aurora.Faint("run --help"))
 
 // PrintIntro shows basic usage / gettting started info.
 func PrintIntro() {

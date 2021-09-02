@@ -1,4 +1,4 @@
-package config
+package core
 
 // Fetch downloads the given resource into the provided path.
 type Fetch struct {
