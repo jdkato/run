@@ -1,11 +1,23 @@
 # $ run vale.yml
 ---
-steps:
-  - type: setup
+cmd: vale --output=JSON docs
 
-    fetch:
-      - link: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
-        path: /styles/Google
+setup:
+  - fetch:
+      link: https://raw.githubusercontent.com/errata-ai/vale/v2/.vale.ini
+      path: .vale.ini
 
-      - link: https://raw.githubusercontent.com/errata-ai/vale/v2/.vale.ini
-        path: .vale.ini
+  - prompt:
+      text: "Choose a base style to install:"
+      choices:
+        - name: Google
+          desc: |
+            A Vale-compatible implementation of the Google Developer
+            Documentation Style Guide.
+          link: https://github.com/errata-ai/Google/releases/latest/download/Google.zip
+
+        - name: Microsoft
+          desc: |
+            A Vale-compatible implementation of the Microsoft Writing Style
+            Guide.
+          link: https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
