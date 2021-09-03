@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 
 	"github.com/goccy/go-yaml"
-	"github.com/jdkato/run/internal/setup"
+	"github.com/jdkato/run/internal/step"
 	"github.com/mitchellh/mapstructure"
 )
 
@@ -15,7 +15,7 @@ import (
 // Input, and Output.
 type Script struct {
 	Command string
-	Setup   []setup.SetupStep
+	Setup   []step.Setup
 }
 
 func (s *Script) load(path string) error {
@@ -36,11 +36,11 @@ func (s *Script) load(path string) error {
 	for _, m := range temp["setup"].([]interface{}) {
 		switch m.(map[string]interface{})["type"] {
 		case "fetch":
-			f := setup.Fetch{}
+			f := step.Fetch{}
 			err = mapstructure.WeakDecode(m, &f)
 			s.Setup = append(s.Setup, f)
 		case "prompt":
-			p := setup.Prompt{}
+			p := step.Prompt{}
 			err = mapstructure.WeakDecode(m, &p)
 			s.Setup = append(s.Setup, p)
 		}

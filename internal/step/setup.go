@@ -1,4 +1,4 @@
-package setup
+package step
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-type SetupStep interface {
+type Setup interface {
 	Name() string
 	Run() error
 }
