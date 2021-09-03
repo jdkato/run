@@ -19,11 +19,11 @@ var exampleConfig = `# $ run vale.yml
 	  - 3.4
 	script: py.test -v`
 
-var intro = fmt.Sprintf(`run - A %s command-line tool.
+var intro = fmt.Sprintf(`%s
 
 %s:	%s
 
-run is a tool for running other command-line tools: create interactive prompts,
+%s is a tool for running other command-line tools: create interactive prompts,
 collect specific inputs, manage configuration files, and much more!
 
 To get started, you'll need a script.yml file.
@@ -33,14 +33,12 @@ To get started, you'll need a script.yml file.
 	%s
 
 See %s for more setup information.`,
-	aurora.Italic("meta"),
+	aurora.Bold("run - A meta command-line tool."),
 	aurora.Bold("Usage"),
-
-	aurora.Faint("$ run [options] script.yml"),
-
+	aurora.Faint("run [options] script.yml"),
+	aurora.Italic("run"),
 	aurora.Bold("Example"),
 	core.Highlight(exampleConfig),
-
 	aurora.Underline("https://docs.errata.ai/vale/about"))
 
 var info = fmt.Sprintf(`%s
